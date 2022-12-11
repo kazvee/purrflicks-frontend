@@ -1,15 +1,18 @@
 import React from 'react';
 import { useState } from 'react';
-import { Fab } from '@mui/material';
+import { Fab, Typography } from '@mui/material';
 import AddCircleOutline from '@mui/icons-material/AddCircleOutline';
 import Container from '@mui/material/Container';
 import AddMovieModal from '../modals/AddMovieModal';
 
-const AdminPage = () => {
+const AdminPage = ({ allMovies, setAllMovies }) => {
   const [isAddMovieModalVisible, setIsAddMovieModalVisible] = useState(false);
 
-  const handleOnSubmit = (product) => {
-    console.log(product);
+  const handleOnSubmit = (movie) => {
+    const tempMovies = Array.from(allMovies);
+    tempMovies.push({ ...movie, _id: tempMovies.length + 1 });
+    setAllMovies(tempMovies);
+    console.log(tempMovies);
   };
 
   return (
@@ -33,6 +36,7 @@ const AdminPage = () => {
         <AddCircleOutline sx={{ mr: 1 }} />
         Add a new movie
       </Fab>
+      <Typography>{allMovies[0]?.name}</Typography>
       <AddMovieModal
         open={isAddMovieModalVisible}
         onClose={() => setIsAddMovieModalVisible(false)}

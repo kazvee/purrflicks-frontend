@@ -12,7 +12,7 @@ const AddMovieModal = ({ open, onClose, onSubmit }) => {
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>Add a new movie</DialogTitle>
       <DialogContent>
-        <MovieForm onSubmit={onSubmit}></MovieForm>
+        <MovieForm onSubmit={onSubmit} />
       </DialogContent>
 
       <DialogActions>

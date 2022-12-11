@@ -20,7 +20,7 @@ const MovieForm = ({ onSubmit, defaultEditValues }) => {
     releaseDate: yup
       .number()
       .required()
-      .typeError('You must add the year of release'),
+      .typeError('You must add the release year as a number'),
     coverImageUrl: yup.string().required('You must add a cover image Url'),
     movieUrl: yup.string().required('You must add a movie Url'),
   });
