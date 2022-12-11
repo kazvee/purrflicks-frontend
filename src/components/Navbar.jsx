@@ -16,7 +16,7 @@ const Navbar = ({ setIsAdminVisible }) => {
       <Container maxWidth='xl'>
         <Toolbar>
           <Typography
-            variant='h6'
+            variant='h5'
             noWrap
             component='a'
             href='/'
@@ -24,7 +24,7 @@ const Navbar = ({ setIsAdminVisible }) => {
               mr: 5,
               fontFamily: 'Helvetica Neue',
               fontWeight: 700,
-              letterSpacing: '.4rem',
+              letterSpacing: '.2rem',
               textDecoration: 'none',
               color: 'inherit',
               display: { xs: 'none', md: 'flex' },
