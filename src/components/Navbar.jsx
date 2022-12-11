@@ -10,7 +10,7 @@ import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-const Navbar = () => {
+const Navbar = ({ setIsAdminVisible }) => {
   return (
     <AppBar position='static' style={{ background: 'deeppink' }}>
       <Container maxWidth='xl'>
@@ -43,7 +43,10 @@ const Navbar = () => {
             </IconButton>
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+            <Button
+              onClick={() => setIsAdminVisible(true)}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
               <Typography
                 noWrap
                 href='/'
