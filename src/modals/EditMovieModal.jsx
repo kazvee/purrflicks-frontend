@@ -7,12 +7,12 @@ import {
 } from '@mui/material';
 import MovieForm from '../forms/MovieForm';
 
-const AddMovieModal = ({ open, onClose, onSubmit }) => {
+const EditMovieModal = ({ movie, open, onClose, onSubmit }) => {
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Add a new movie</DialogTitle>
+      <DialogTitle>Editing this movie</DialogTitle>
       <DialogContent>
-        <MovieForm onSubmit={onSubmit} />
+        <MovieForm defaultEditValues={movie} onSubmit={onSubmit} />
       </DialogContent>
 
       <DialogActions>
@@ -20,15 +20,15 @@ const AddMovieModal = ({ open, onClose, onSubmit }) => {
           variant='contained'
           color='error'
           form='movie-form'
-          type='reset'
-          children='Clear Form'
+          children='Cancel'
+          onClick={onClose}
         />
         <Button
           variant='contained'
           color='success'
           form='movie-form'
           type='submit'
-          children='Add Movie'
+          children='Update movie details'
           onClick={onClose}
         />
       </DialogActions>
@@ -36,4 +36,4 @@ const AddMovieModal = ({ open, onClose, onSubmit }) => {
   );
 };
 
-export default AddMovieModal;
+export default EditMovieModal;

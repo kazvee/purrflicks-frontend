@@ -1,9 +1,8 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import MovieAdmin from './MovieAdmin';
-import { borderColor } from '@mui/system';
 
-const MovieCatalogueAdmin = ({ movies }) => {
+const MovieListAdmin = ({ movies, handleOnEdit, handleOnDelete }) => {
   if (movies.length === 0) {
     return null;
   }
@@ -13,7 +12,11 @@ const MovieCatalogueAdmin = ({ movies }) => {
       {movies.map((movie) => {
         return (
           <Grid item xs={12} sm={6} md={4} key={movie._id}>
-            <MovieAdmin movie={movie} />
+            <MovieAdmin
+              movie={movie}
+              handleOnEdit={handleOnEdit}
+              handleOnDelete={handleOnDelete}
+            />
           </Grid>
         );
       })}
@@ -21,4 +24,4 @@ const MovieCatalogueAdmin = ({ movies }) => {
   );
 };
 
-export default MovieCatalogueAdmin;
+export default MovieListAdmin;

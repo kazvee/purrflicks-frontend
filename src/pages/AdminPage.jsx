@@ -4,19 +4,36 @@ import { Fab, Typography } from '@mui/material';
 import AddCircleOutline from '@mui/icons-material/AddCircleOutline';
 import Container from '@mui/material/Container';
 import AddMovieModal from '../modals/AddMovieModal';
+import EditMovieModal from '../modals/EditMovieModal';
 import MovieListAdmin from '../components/MovieListAdmin';
 
 const AdminPage = ({ allMovies, setAllMovies }) => {
   const [isAddMovieModalVisible, setIsAddMovieModalVisible] = useState(false);
+  const [isEditMovieModalVisible, setIsEditMovieModalVisible] = useState(false);
+  const [editMovie, setEditMovie] = useState();
 
   const handleOnSubmit = (movie) => {
     const tempMovies = Array.from(allMovies);
-    tempMovies.push({
-      ...movie,
-      _id: tempMovies.length + 1,
-    });
+    if (movie._id) {
+      const movieIndex = tempMovies.findIndex(
+        (movie) => movie._id === movie._id
+      );
+      tempMovies[movieIndex] = movie;
+    } else
+      tempMovies.push({
+        ...movie,
+        _id: tempMovies.length + 1,
+      });
     setAllMovies(tempMovies);
   };
+
+  const handleOnEdit = (movie) => {
+    setIsEditMovieModalVisible(true);
+    setEditMovie(movie);
+  };
+
+  const handleOnDelete = (id) =>
+    setAllMovies((previous) => previous.filter((movie) => movie._id !== id));
 
   return (
     <Container maxWidth='lg' sx={{ margin: 2 }}>
@@ -40,12 +57,23 @@ const AdminPage = ({ allMovies, setAllMovies }) => {
         Add a new movie
       </Fab>
 
-      <MovieListAdmin movies={allMovies} />
+      <MovieListAdmin
+        movies={allMovies}
+        handleOnEdit={handleOnEdit}
+        handleOnDelete={handleOnDelete}
+      />
 
       <AddMovieModal
         open={isAddMovieModalVisible}
         onClose={() => setIsAddMovieModalVisible(false)}
         onSubmit={handleOnSubmit}
+      />
+
+      <EditMovieModal
+        open={isEditMovieModalVisible}
+        onClose={() => setIsEditMovieModalVisible(false)}
+        onSubmit={handleOnSubmit}
+        movie={editMovie}
       />
     </Container>
   );
