@@ -100,28 +100,30 @@ const Navbar = () => {
             </Link>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
-            <Button sx={{ my: 2, color: 'white', display: 'block' }}>
-              <Typography
-                noWrap
-                href='/'
-                sx={{
-                  mr: 2,
-                  fontFamily: 'Helvetica Neue',
-                  fontWeight: 200,
-                  letterSpacing: '.1rem',
-                  textDecoration: 'none',
-                  color: 'inherit',
-                  display: { xs: 'none', md: 'flex' },
-                }}
-              >
-                <FavoriteIcon
+            <Link to='/favourites' style={{ textDecoration: 'none' }}>
+              <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+                <Typography
+                  noWrap
+                  href='/'
                   sx={{
-                    mr: 1,
+                    mr: 2,
+                    fontFamily: 'Helvetica Neue',
+                    fontWeight: 200,
+                    letterSpacing: '.1rem',
+                    textDecoration: 'none',
+                    color: 'inherit',
+                    display: { xs: 'none', md: 'flex' },
                   }}
-                />
-                Favorites
-              </Typography>
-            </Button>
+                >
+                  <FavoriteIcon
+                    sx={{
+                      mr: 1,
+                    }}
+                  />
+                  Favorites
+                </Typography>
+              </Button>
+            </Link>
           </Box>
         </Toolbar>
       </Container>

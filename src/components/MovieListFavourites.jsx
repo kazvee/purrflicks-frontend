@@ -1,8 +1,8 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import MovieCatalogue from './MovieCatalogue';
+import MovieFavourites from './MovieFavourites';
 
-const MovieListCatalogue = ({ movies, onAdd }) => {
+const MovieListFavourites = ({ movies }) => {
   if (movies.length === 0) {
     return null;
   }
@@ -12,7 +12,7 @@ const MovieListCatalogue = ({ movies, onAdd }) => {
       {movies.map((movie) => {
         return (
           <Grid item xs={12} sm={6} md={4} key={movie._id}>
-            <MovieCatalogue movie={movie} onAdd={onAdd} />
+            <MovieFavourites movie={movie} />
           </Grid>
         );
       })}
@@ -20,4 +20,4 @@ const MovieListCatalogue = ({ movies, onAdd }) => {
   );
 };
 
-export default MovieListCatalogue;
+export default MovieListFavourites;

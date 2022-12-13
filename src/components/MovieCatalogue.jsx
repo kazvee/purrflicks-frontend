@@ -2,12 +2,13 @@ import React from 'react';
 import MovieInfo from '../components/MovieInfo';
 import Button from '@mui/material/Button';
 
-const MovieCatalogue = ({ movie }) => {
+const MovieCatalogue = ({ movie, onAdd }) => {
   return (
     <>
       <MovieInfo movie={movie} />
 
       <Button
+        onClick={() => onAdd(movie._id)}
         sx={{
           background: 'deeppink',
           color: 'black',
