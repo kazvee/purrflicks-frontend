@@ -9,8 +9,9 @@ import PetsIcon from '@mui/icons-material/Pets';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Link } from 'react-router-dom';
 
-const Navbar = ({ setIsAdminVisible }) => {
+const Navbar = () => {
   return (
     <AppBar position='static' style={{ background: 'deeppink' }}>
       <Container maxWidth='xl'>
@@ -42,54 +43,61 @@ const Navbar = ({ setIsAdminVisible }) => {
               <PetsIcon />
             </IconButton>
           </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <Button
-              onClick={() => setIsAdminVisible(true)}
-              sx={{ my: 2, color: 'white', display: 'block' }}
-            >
-              <Typography
-                noWrap
-                href='/'
-                sx={{
-                  mr: 2,
-                  fontFamily: 'Helvetica Neue',
-                  fontWeight: 200,
-                  letterSpacing: '.1rem',
-                  textDecoration: 'none',
-                  color: 'inherit',
-                  display: { xs: 'none', md: 'flex' },
-                }}
-              >
-                <SupervisorAccountIcon
+          <Box
+            sx={{
+              flexGrow: 1,
+
+              display: { xs: 'none', md: 'flex' },
+            }}
+          >
+            <Link to='/admin' style={{ textDecoration: 'none' }}>
+              <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+                <Typography
+                  noWrap
+                  href='/'
                   sx={{
-                    mr: 1,
+                    mr: 2,
+                    fontFamily: 'Helvetica Neue',
+                    fontWeight: 200,
+                    letterSpacing: '.1rem',
+                    textDecoration: 'none',
+                    color: 'inherit',
+                    display: { xs: 'none', md: 'flex' },
                   }}
-                />
-                Admin
-              </Typography>
-            </Button>
-            <Button sx={{ my: 2, color: 'white', display: 'block' }}>
-              <Typography
-                noWrap
-                href='/'
-                sx={{
-                  mr: 2,
-                  fontFamily: 'Helvetica Neue',
-                  fontWeight: 200,
-                  letterSpacing: '.1rem',
-                  textDecoration: 'none',
-                  color: 'inherit',
-                  display: { xs: 'none', md: 'flex' },
-                }}
-              >
-                <VideoLibraryIcon
+                >
+                  <SupervisorAccountIcon
+                    sx={{
+                      mr: 1,
+                    }}
+                  />
+                  Admin
+                </Typography>
+              </Button>
+            </Link>
+            <Link to='/' style={{ textDecoration: 'none' }}>
+              <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+                <Typography
+                  noWrap
+                  href='/'
                   sx={{
-                    mr: 1,
+                    mr: 2,
+                    fontFamily: 'Helvetica Neue',
+                    fontWeight: 200,
+                    letterSpacing: '.1rem',
+                    textDecoration: 'none',
+                    color: 'inherit',
+                    display: { xs: 'none', md: 'flex' },
                   }}
-                />
-                Catalogue
-              </Typography>
-            </Button>
+                >
+                  <VideoLibraryIcon
+                    sx={{
+                      mr: 1,
+                    }}
+                  />
+                  Catalogue
+                </Typography>
+              </Button>
+            </Link>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Button sx={{ my: 2, color: 'white', display: 'block' }}>

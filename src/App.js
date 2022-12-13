@@ -2,17 +2,25 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import AdminPage from './pages/AdminPage';
 import { Fragment, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Catalogue from './pages/Catalogue';
 
 function App() {
-  const [isAdminVisible, setIsAdminVisible] = useState(false);
   const [allMovies, setAllMovies] = useState([]);
 
   return (
     <Fragment>
-      <Navbar setIsAdminVisible={setIsAdminVisible} />
-      {isAdminVisible && (
-        <AdminPage allMovies={allMovies} setAllMovies={setAllMovies} />
-      )}
+      <Navbar />
+
+      <Routes>
+        <Route
+          path='/admin'
+          element={
+            <AdminPage allMovies={allMovies} setAllMovies={setAllMovies} />
+          }
+        />
+        <Route path='/' element={<Catalogue movies={allMovies} />} />
+      </Routes>
     </Fragment>
   );
 }
